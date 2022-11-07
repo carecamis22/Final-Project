@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyController : MonoBehaviour
 {
     public float speed;
@@ -40,4 +41,9 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-       
+            position.x = position.x + Time.deltaTime * speed * direction;;
+        }
+        
+        rigidbody2D.MovePosition(position);
+    }
+}
