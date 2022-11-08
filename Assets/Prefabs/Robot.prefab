@@ -151,6 +151,8 @@ MonoBehaviour:
   speed: 0
   vertical: 0
   changeTime: 3
+  smokeEffect: {fileID: 5634426864745241505, guid: a990e5ecf3d864840905b8bcf7142d78,
+    type: 3}
 --- !u!95 &1909491221902870807
 Animator:
   serializedVersion: 4
@@ -178,6 +180,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1886247257862037690}
     m_Modifications:
+    - target: {fileID: 5634426864745241505, guid: a990e5ecf3d864840905b8bcf7142d78,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5634426864745241505, guid: a990e5ecf3d864840905b8bcf7142d78,
         type: 3}
       propertyPath: moveWithTransform
