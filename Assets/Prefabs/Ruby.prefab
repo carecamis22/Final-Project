@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   maxHealth: 5
+  projectilePrefab: {fileID: 1146160729957099050, guid: 262bd24f1f9e66e4fa9a03ed08624605,
+    type: 3}
   timeInvincible: 2
 --- !u!50 &8750175502151246403
 Rigidbody2D:
@@ -121,7 +123,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &9013908723174377485
