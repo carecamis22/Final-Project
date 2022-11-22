@@ -9,6 +9,8 @@ public class RubyController : MonoBehaviour
     public int maxHealth = 5;
     
     public GameObject projectilePrefab;
+    public GameObject damage;
+    public GameObject healthincrease;
     
     public AudioClip throwSound;
     public AudioClip hitSound;
@@ -102,13 +104,10 @@ public class RubyController : MonoBehaviour
             
             isInvincible = true;
             invincibleTimer = timeInvincible;
-            
+            GameObject damage = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
             PlaySound(hitSound);
         }
-        
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        
-        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+
     }
     
     void Launch()

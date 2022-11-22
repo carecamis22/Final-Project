@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     public float speed;
     public bool vertical;
+    public bool horizontal;
     public float changeTime = 3.0f;
 
     public ParticleSystem smokeEffect;
