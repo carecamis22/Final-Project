@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4679085984731911401}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,8 +33,7 @@ Transform:
   m_LocalPosition: {x: 2.52, y: -3.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4678428354924359945}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,10 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ebc28203d980a4797b9dffc1c59a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  vertical: 0
+  speed: 2
+  vertical: 1
   changeTime: 3
-  smokeEffect: {fileID: 5634426864745241505, guid: a990e5ecf3d864840905b8bcf7142d78,
+  smokeEffect: {fileID: 5511195126282996468, guid: 47750726e7c646c41b441bce6eaa814d,
     type: 3}
 --- !u!95 &1909491221902870807
 Animator:
@@ -167,7 +166,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 436d734028e6c8e4aaf9352a95c242e8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -270,88 +269,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &3859175288157542810
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1886247257862037690}
-    m_Modifications:
-    - target: {fileID: 5634426864745241505, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5634426864745241505, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723901917105145918, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_Name
-      value: Particle System
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a990e5ecf3d864840905b8bcf7142d78, type: 3}
---- !u!4 &4678428354924359945 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8458770239918254227, guid: a990e5ecf3d864840905b8bcf7142d78,
-    type: 3}
-  m_PrefabInstance: {fileID: 3859175288157542810}
-  m_PrefabAsset: {fileID: 0}

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    void OnTriggerStay2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        RubyController controller = other.GetComponent<RubyController >();
+        RubyController player = other.gameObject.GetComponent<RubyController >();
 
-        if (controller != null)
+        if (player != null)
         {
-            controller.ChangeHealth(-1);
+            player.ChangeHealth(-1);
         }
     }
 }

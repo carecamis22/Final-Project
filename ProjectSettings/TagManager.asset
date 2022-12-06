@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
+  - RubyController
+  - lilcat
+  - slowcat
+  - faststar
+  - Pickup
+  - faststarr
+  - faststarrr
+  - pickupp
+  - pickuppp
+  - pickupppp
+  - pickupup
   layers:
   - Default
   - TransparentFX

@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 9013908723174377485}
   - component: {fileID: 6724275356520682957}
   - component: {fileID: 5898044348292747526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ruby
-  m_TagString: Untagged
+  m_TagString: RubyController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,9 +102,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  FixText: {fileID: 0}
+  winText: {fileID: 0}
+  loseText: {fileID: 0}
+  ammoText: {fileID: 0}
   maxHealth: 5
   projectilePrefab: {fileID: 1146160729957099050, guid: 262bd24f1f9e66e4fa9a03ed08624605,
     type: 3}
+  damage: {fileID: 593657168227436193, guid: 5c3c9b3d37a6eae4baf4ea079c0d4902, type: 3}
+  healthincrease: {fileID: 5177557671010144759, guid: e45e4177b8646764494bbf7121e37920,
+    type: 3}
+  throwSound: {fileID: 8300000, guid: 93218615be626594484891c31cc9aee7, type: 3}
+  hitSound: {fileID: 8300000, guid: c1a826d8f9d5e484c8c5c177c487ca29, type: 3}
+  winSound: {fileID: 8300000, guid: 7da41b5d1fd3dab4b92ef27f93ac1b96, type: 3}
+  loseSound: {fileID: 8300000, guid: 456266665071ed44e9e52894e802c275, type: 3}
+  frogSound: {fileID: 8300000, guid: 0b1e52ee029dd1842a76046275c1bd0f, type: 3}
+  collisionSound: {fileID: 8300000, guid: 99de08161a9916f4b854af42397f646d, type: 3}
   timeInvincible: 2
 --- !u!50 &8750175502151246403
 Rigidbody2D:

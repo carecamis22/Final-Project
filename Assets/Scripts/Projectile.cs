@@ -30,6 +30,14 @@ public class Projectile : MonoBehaviour
         if (e != null)
         {
             e.Fix();
+            RubyController.robots += 1;
+        }
+
+        HardEnemyController c = other.collider.GetComponent<HardEnemyController>();
+        if (c != null)
+        {
+            c.Fix();
+            RubyController.robots += 1;
         }
     
         Destroy(gameObject);

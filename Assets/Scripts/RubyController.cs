@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RubyController : MonoBehaviour
 {
     public float speed = 3.0f;
+    public TextMeshProUGUI FixText;
+    public GameObject winText;
+    public GameObject loseText;
+    public TextMeshProUGUI ammoText;
+    
     
     public int maxHealth = 5;
+    public static int currentAmmo;
+    public static int robots = 0;
     
     public GameObject projectilePrefab;
     public GameObject damage;
@@ -14,7 +23,12 @@ public class RubyController : MonoBehaviour
     
     public AudioClip throwSound;
     public AudioClip hitSound;
-    
+    public AudioClip winSound;
+    public AudioClip loseSound;
+    public AudioClip frogSound;
+    public AudioClip collisionSound;
+
+    public int ammo { get { return currentAmmo; } }
     public int health { get { return currentHealth; }}
     int currentHealth;
     
@@ -40,11 +54,20 @@ public class RubyController : MonoBehaviour
         currentHealth = maxHealth;
 
         audioSource = GetComponent<AudioSource>();
+        robots = 0;
+       // SetCountText ();
+       currentAmmo = 5;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        winText.SetActive(false);
+        loseText.SetActive(false);
+        ChangeScore();
+        LoseGame();
+        AmmoCount();
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         
@@ -67,8 +90,9 @@ public class RubyController : MonoBehaviour
                 isInvincible = false;
         }
         
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.C) && ammo > 0)
         {
+            currentAmmo--;
             Launch();
         }
         
@@ -77,10 +101,16 @@ public class RubyController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
             if (hit.collider != null)
             {
+                //if(robots >= 5 && SceneManager.GetActiveScene().name != "Untitled")
+                //{
+                //    SceneManager.LoadScene("Untitled");
+                //}
                 NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
                 if (character != null)
                 {
+                    //NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
                     character.DisplayDialog();
+                    PlaySound(frogSound);
                 }
             }
         }
@@ -95,6 +125,84 @@ public class RubyController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
+     public void ChangeScore()
+     {
+        FixText.text = "Robots Fixed: " + robots + "/5";
+
+        if (robots >= 5)
+        {
+            winText.SetActive(true);
+            PlaySound(winSound);
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene("Main");
+                robots = 0;
+            }
+        }
+     }
+
+     public void OnCollisionEnter2D(Collision2D collision)
+     {
+        if (collision.gameObject.tag == "lilcat")
+        {
+            PlaySound(collisionSound);
+        }
+        if (collision.gameObject.tag == "slowcat")
+        {
+            speed = 1.5f;
+        }
+        if(collision.gameObject.tag == "faststar")
+        {
+            speed = 4.0f;
+           Destroy (GameObject.FindWithTag("faststar"));
+       }
+
+             if(collision.gameObject.tag == "faststarr")
+        {
+            speed = 4.0f;
+           Destroy (GameObject.FindWithTag("faststarr"));
+       }      
+
+       if(collision.gameObject.tag == "faststarrr")
+        {
+            speed = 4.0f;
+           Destroy (GameObject.FindWithTag("faststarrr"));
+       }
+
+      if(collision.gameObject.tag == "Pickup")
+         {
+            currentAmmo += 1;
+         Destroy (GameObject.FindWithTag("Pickup"));
+       }
+
+             if(collision.gameObject.tag == "pickupp")
+         {
+            currentAmmo += 1;
+         Destroy (GameObject.FindWithTag("pickupp"));
+       }
+
+             if(collision.gameObject.tag == "pickuppp")
+         {
+            currentAmmo += 1;
+         Destroy (GameObject.FindWithTag("pickuppp"));
+       }
+
+      if(collision.gameObject.tag == "pickupppp")
+         {
+            currentAmmo += 1;
+         Destroy (GameObject.FindWithTag("pickupppp"));
+       }
+
+                   if(collision.gameObject.tag == "pickupup")
+         {
+            currentAmmo += 1;
+         Destroy (GameObject.FindWithTag("pickupup"));
+       }
+     }
+
+
+
     public void ChangeHealth(int amount)
     {
         if (amount < 0)
@@ -104,11 +212,29 @@ public class RubyController : MonoBehaviour
             
             isInvincible = true;
             invincibleTimer = timeInvincible;
-            GameObject damage = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+            GameObject projectileObject = Instantiate(damage, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
             PlaySound(hitSound);
         }
 
+
+      currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);  
+
+       if (currentHealth <= 0)
+       {
+           loseText.SetActive(true);
+       }
+
+
+        if (currentHealth >+ 1)
+       {
+             GameObject projectileObject = Instantiate(healthincrease, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+     }
+
     }
+
+
     
     void Launch()
     {
@@ -126,5 +252,28 @@ public class RubyController : MonoBehaviour
     {
         audioSource.PlayOneShot(clip);
     }
+
+    public void LoseGame()
+    {
+                if (currentHealth <= 0)
+        {
+            loseText.SetActive(true);
+            speed = 0f;
+            PlaySound(loseSound);
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene("Main");
+                robots = 0;
+            }
+        }
+    }
+
+    public void AmmoCount()
+    {
+        ammoText.text = "Cogs: " + currentAmmo;
+    }
+
+
 }
 

@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class NonPlayerCharacter : MonoBehaviour
 {
     public float displayTime = 4.0f;
     public GameObject dialogBox;
     float timerDisplay;
+   // public GameObject nextLevel;
     
     void Start()
     {
+       
         dialogBox.SetActive(false);
         timerDisplay = -1.0f;
     }
@@ -24,6 +27,11 @@ public class NonPlayerCharacter : MonoBehaviour
                 dialogBox.SetActive(false);
             }
         }
+
+        //if (RubyController.robots >= 5 && SceneManager.GetActiveScene().name == "Main")
+       // {
+       //     SceneManager.LoadScene("Untitled");
+       // }
     }
     
     public void DisplayDialog()
